@@ -1,4 +1,4 @@
-package tp.p1.Model;
+package tp.p1;
 
 import tp.pr1.util.MyStringUtils;
 
@@ -17,11 +17,33 @@ class GamePrinter {
 		this.game = game;
 	}
 	
-	private void encodeGame(Game game) {		//Fix if null object is in i,j
+	private void encodeGame(Game game) {
 		board = new String[numRows][numCols];
 		for(int i = 0; i < numRows; i++) {
 			for(int j = 0; j < numCols; j++) {
-				board[i][j] = game.board.toString(j, i);
+				if (game.UCMat(j, i)){
+					board[i][j] = game.UCMtoString();
+				}
+				else if(game.cListFoundAt(j, i)){
+					board[i][j] = ( game.cListToString(game.cListFindShip(j, i)));
+					
+				}
+				else if(game.dListFoundAt(j, i)){
+					board[i][j] = ( game.dListToString(game.dListFindShip(j, i)));
+				}
+				else if (game.UFOat(j, i)){
+					board[i][j] = game.UFOtoString();
+				}
+				else if (game.missileAt(j, i)){
+					board[i][j] = game.MissiletoString();
+				}
+				else if (game.projectileAt(j, i)){
+					board[i][j] = game.bListToString(game.bListFindBomb(j, i));
+				}
+				
+				else {
+					board[i][j] = " ";
+				}
 			}
 		}
 	}
