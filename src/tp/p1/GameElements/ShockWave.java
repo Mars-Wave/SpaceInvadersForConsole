@@ -4,20 +4,16 @@ import tp.p1.Model.Game;
 
 public class ShockWave extends Weapon {
 	
-	private static boolean itExists;
 	
 	public ShockWave(Game game, int x, int y) {
 		super(game, x, y, 1);
 	}
 
-	 public static boolean exists() {
-	        return itExists;
-	    }
+	
 	
 	@Override
 	public void computerAction() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -38,10 +34,8 @@ public class ShockWave extends Weapon {
 
 	@Override
 	public boolean performAttack(GameElement other) {
-		if(itExists) {
-			other.receiveShockWaveAttack(damage);
-			itExists = false;
-		}
+				other.receiveShockWaveAttack(damage);
+				this.itExists = false;
 		return itExists;
 	}
 

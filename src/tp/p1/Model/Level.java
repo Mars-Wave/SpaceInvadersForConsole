@@ -10,7 +10,7 @@ public enum Level {
     private double ufoFreq;
     private double shootFreq;
     private int numRowsOfCarriers;
-    private int turnExplosiveFreq;// = 0,05; // currently independent of level
+    private double turnExplosiveFreq = 0.05; // currently independent of level
 
     private Level(
             int numCarrierShips,
@@ -57,6 +57,10 @@ public enum Level {
 
     public int getNumDestroyersPerRow() {
         return getNumDestroyers();
+    }
+
+    public Double getExplosiveFreq() {
+        return turnExplosiveFreq;
     }
 
     public static Level parse(String inputString) {

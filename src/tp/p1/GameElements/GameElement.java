@@ -31,8 +31,12 @@ public abstract class  GameElement implements IAttack {
    
      
     public boolean isAlive() {
+        return shield > 0;
+    }
+    public boolean exists() {
         return itExists;
     }
+
 
     public int getShield() {
         return shield;
@@ -47,13 +51,11 @@ public abstract class  GameElement implements IAttack {
     }
 
     public boolean isOut() {
+
     	return !game.isOnBoard(positionX, positionY);
     }
     
     public void destroy() {
-        /*positionX = Game.DIM_X -1;
-        positionX = 0;
-        //Maybe useful !! */
 		itExists = false;
 	}
 

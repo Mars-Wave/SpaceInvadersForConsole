@@ -76,9 +76,14 @@ public class UCMspaceship extends Ship {
     	return shockWave;
     }
     
+    public void enableSW()
+    {
+    	shockWave = true;
+    }
+    
     public String swString() {
         String str = "Ready!";
-        if (!ShockWave.exists()) {
+        if (!shockWave) {
             str = "Not ready.";
         }
         return str;
@@ -91,12 +96,16 @@ public class UCMspaceship extends Ship {
         }
         return str;
     }
-
-    public void releaseSW(ShockWave shockWave) {    //Maybe?
+    
+    
+    @Override
+    public void destroy() {
+  		
+  	}
+    public void releaseSW(ShockWave sWave) {    //Maybe?
         // TODO Auto-generated method stub
-    	
-    	
-    		
+    	game.addObject(sWave);
+    	shockWave = false;
     }
 
     @Override

@@ -10,7 +10,6 @@ public class Projectile extends Weapon {
 	public Projectile(Game game, int x, int y, DestroyerShip dShip) {
 		super(game, x, y, 1);
 		this.dShip = dShip;
-		itExists = true;
 	}
 
 	public Direction getDir() {
@@ -46,7 +45,7 @@ public class Projectile extends Weapon {
 	@Override
 	public boolean performAttack(GameElement other) {
 		boolean aux = other.getX() == positionX && other.getY() == positionY;
-		if(aux && itExists) {
+		if(aux) {
 			other.receiveBombAttack(damage);
 			itExists = false;
 		}

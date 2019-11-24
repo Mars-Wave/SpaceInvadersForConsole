@@ -9,10 +9,10 @@ public abstract class AlienShip extends EnemyShip {
     protected static Direction dir;
     protected static Direction nextDir;
 
-    public AlienShip(Game game, int x, int y, int lives, int points) {
+    public AlienShip(Game game, int x, int y, int lives, int points, Direction dir, Direction nextDir) {
         super(game, x, y, lives, points);
-        dir = Direction.LEFT;
-        nextDir = Direction.LEFT;
+        this.dir = dir;
+        this.nextDir = nextDir;
         enemyShipsCounter++;
     }
 
@@ -34,7 +34,8 @@ public abstract class AlienShip extends EnemyShip {
 
     public void move() {
         // TODO Auto-generated method stub
-        if (itExists) {
+
+        if (game.getcurrentCycle() % game.getCycle2Move() == 0) {
             if (dir == Direction.DOWN) {
                 positionY += dir.getValue();
             } else {
@@ -53,15 +54,23 @@ public abstract class AlienShip extends EnemyShip {
             }
             haveLanded = positionY == Game.DIM_Y - 1;
         }
+
+
     }
 
     public void checkLanded() {
         haveLanded = positionY == Game.DIM_Y - 1;
     }
 
-    public boolean receiveMissileAttack(int damage) {
-        shield -= damage;
-        if (shield <= 0) itExists = false;
-        return true;
+    @Override
+    public void onDelete() {
+        // TODO Auto-generated method stub
+        if (shield <= 0) {
+            game.receivePoints(points);
+        }
+        enemyShipsCounter--;  //Explosive ship constructor will use the super with another ++ so when carriership is removed to evolve it does not affect the counter
+
     }
+
+
 }

@@ -8,6 +8,7 @@ public abstract class NoParamsCommand extends Command {
 	
 	public Command parse(String[] commandWords) {
 		Command com = null;
+			//System.out.println(availableCommands[i].helpText());
 			if(matchCommandName(commandWords[0])) {
 				com = this;
 			}

@@ -1,5 +1,6 @@
 package tp.p1.Model;
 
+import tp.p1.Board.*;
 import tp.p1.GameElements.*;
 import tp.p1.Interfaces.IPlayerController;
 
@@ -12,7 +13,7 @@ public class Game implements IPlayerController {
     private GamePrinter printer;
     private Random rand;
     private Level level;
-    public Board board;
+    Board board;
     private UCMspaceship player;
     private boolean doExit;
     private BoardInitializer initializer;
@@ -39,6 +40,14 @@ public class Game implements IPlayerController {
     public Level getLevel() {
         return level;
     }
+    
+    public int getcurrentCycle() {
+        return currentCycle;
+    }
+    public int getCycle2Move() {
+        return level.getNumCyclesToMoveOneCell();
+    }
+    
 
     public void reset() {
         initGame();
@@ -46,6 +55,10 @@ public class Game implements IPlayerController {
 
     public void addObject(GameElement object) {    //Maybe we are supposed to call this in boardInitializer instead of directly board.add?
         board.add(object);
+    }
+
+    public void checkAttacks(GameElement element){
+        board.checkAttacks(element);
     }
 
     public String positionToString(int x, int y) {//Maybe we are supposed to call this in gamePrinter instead of directly board.tostring?
@@ -68,6 +81,7 @@ public class Game implements IPlayerController {
         board.computerAction(rand, level);
         board.update();
         currentCycle++;
+    	
     }
 
     public boolean isOnBoard(int x, int y) {
@@ -119,7 +133,11 @@ public class Game implements IPlayerController {
     }
 
     public void releaseShockWave() {
-        player.releaseSW(new ShockWave(this, player.getX(), player.getY()));
+    	if(player.swHave()) {
+
+    		 player.releaseSW(new ShockWave(this, player.getX(), player.getY()));
+
+    	}
         
     }
 
@@ -147,4 +165,9 @@ public class Game implements IPlayerController {
         }
         // TODO Auto-generated method stub
     }
+
+	public void enableSW() {
+		// TODO Auto-generated method stub
+		player.enableSW();
+	}
 }

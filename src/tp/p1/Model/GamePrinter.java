@@ -2,7 +2,7 @@ package tp.p1.Model;
 
 import tp.pr1.util.MyStringUtils;
 
-public  class GamePrinter {
+class GamePrinter {
 	private int numRows;
 	private int numCols;
 	private Game game;

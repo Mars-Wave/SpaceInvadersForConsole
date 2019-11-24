@@ -39,8 +39,8 @@ public class Missile extends Weapon {
 	
 	public boolean performAttack(GameElement other) {
 		boolean aux = other.getX() == positionX && other.getY() == positionY;
-		if(aux && itExists) {
-			other.receiveMissileAttack(damage);
+		if(aux) {
+			if (other.receiveMissileAttack(damage))
 			itExists = false;
 		}
 		return aux;
@@ -53,7 +53,6 @@ public class Missile extends Weapon {
 	
 	public boolean receiveBombAttack(int damage) {
 		shield -= damage;
-		if(shield <= 0) itExists = false;
 		return true;
 	}
 }

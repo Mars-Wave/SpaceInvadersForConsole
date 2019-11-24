@@ -1,7 +1,9 @@
-package tp.p1.Model;
+package tp.p1.Board;
 
 import tp.p1.GameElements.AlienShip;
 import tp.p1.GameElements.GameElement;
+import tp.p1.Model.Game;
+import tp.p1.Model.Level;
 
 import java.util.Random;
 
@@ -30,22 +32,22 @@ public class Board {
 
     public void update() {
         for (int i = 0; i < currentElements; i++) {
+            checkAttacks(elements[i]);
             elements[i].move();
             checkAttacks(elements[i]);
         }
         AlienShip.changeDir();
-      /*  for (int i = 0; i < currentElements; i++) {
-            checkAttacks(elements[i]);
-        }*/
-
         removeDead();
 // TODO implement
     }
 
-    private void checkAttacks(GameElement gameElement) {
-        for (int j = 0; j < currentElements; j++) {
-            if (gameElement != elements[j] && gameElement.isAlive()) {
-                gameElement.performAttack(elements[j]);
+    public void checkAttacks(GameElement gameElement) {
+        if (gameElement.exists()) {
+            for (int j = 0; j < currentElements; j++) {
+                if (gameElement != elements[j]) {
+                    gameElement.performAttack(elements[j]);
+
+                }
             }
         }
 // TODO implement
@@ -91,23 +93,24 @@ public class Board {
     }
 
     private void remove(GameElement gameElement, int where) {
-        elements[where].destroy();
         elements[where].onDelete();
+        elements[where].destroy();
         GameElement aux;
-        for (int i = where; i < currentElements - 1; i++) {
-            aux = elements[i + 1];
-            elements[i + 1] = elements[i];
-            elements[i] = aux;
+        if (!elements[where].exists()) {
+            for (int i = where; i < currentElements - 1; i++) {
+                aux = elements[i + 1];
+                elements[i + 1] = elements[i];
+                elements[i] = aux;
+            }
+            currentElements--;
         }
-        currentElements--;
 // TODO implement
     }
 
     private void removeDead() {
         int n = currentElements;
         for (int i = n; i > 0; i--) {
-
-            if (!elements[i - 1].isAlive() || elements[i - 1].isOut()) {
+            if (!elements[i - 1].isAlive() || elements[i - 1].isOut() || !elements[i - 1].exists()) {
                 remove(elements[i - 1], i - 1);
             }
         }

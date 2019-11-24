@@ -14,7 +14,18 @@ public abstract class EnemyShip extends Ship{
 	@Override
 	public void onDelete() {
 		// TODO Auto-generated method stub
-		if(!isOut()) game.receivePoints(points);
+		if(shield <= 0) game.receivePoints(points);
+		
 	}
 
+	public boolean receiveMissileAttack(int damage) {
+		shield -= damage;
+		return true;
+	}
+	
+	public boolean receiveShockWaveAttack(int damage) {
+		shield -= damage;
+		return true;
+	}
+	
 }
