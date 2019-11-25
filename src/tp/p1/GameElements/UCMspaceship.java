@@ -8,6 +8,10 @@ public class UCMspaceship extends Ship {
     private Direction dir;
     private Missile missile = null;
     private boolean shockWave;
+<<<<<<< Updated upstream
+=======
+    private boolean superMissile;
+>>>>>>> Stashed changes
     private int score = 0;
     private boolean iMove;
     private static boolean ableToShoot;
@@ -71,6 +75,24 @@ public class UCMspaceship extends Ship {
         return shield;
     }
     
+<<<<<<< Updated upstream
+=======
+    public boolean smHave()
+    {
+    	return superMissile;
+    }
+    
+    public void enableSM()
+    {
+    	superMissile = true;
+    }
+    
+    public void disableSM()
+    {
+    	superMissile = false;
+    }
+    
+>>>>>>> Stashed changes
     public boolean swHave()
     {
     	return shockWave;
@@ -81,6 +103,14 @@ public class UCMspaceship extends Ship {
     	shockWave = true;
     }
     
+<<<<<<< Updated upstream
+=======
+    public void disableSW()
+    {
+    	shockWave = false;
+    }
+    
+>>>>>>> Stashed changes
     public String swString() {
         String str = "Ready!";
         if (!shockWave) {
@@ -97,6 +127,7 @@ public class UCMspaceship extends Ship {
         return str;
     }
     
+<<<<<<< Updated upstream
     
     @Override
     public void destroy() {
@@ -106,6 +137,12 @@ public class UCMspaceship extends Ship {
         // TODO Auto-generated method stub
     	game.addObject(sWave);
     	shockWave = false;
+=======
+    public void releaseSW(ShockWave sWave) {    //Maybe?
+        // TODO Auto-generated method stub
+    	game.addObject(sWave);
+    	shockWave = false;	
+>>>>>>> Stashed changes
     }
 
     @Override

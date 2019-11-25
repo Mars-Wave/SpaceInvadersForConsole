@@ -45,14 +45,28 @@ public class UFO extends EnemyShip implements IExecuteRandomActions {    //Does 
 		appereance = false;
 		positionX = Game.DIM_X;
 		positionY = 0;
+<<<<<<< Updated upstream
 		shield = 1;
+=======
+		
+>>>>>>> Stashed changes
 	}
     @Override
     public void onDelete() {
 		// TODO Auto-generated method stub
+<<<<<<< Updated upstream
 		if(shield <= 0) {
 			game.receivePoints(points);
 			game.enableSW();
+=======
+
+    	if(shield <= 0) {
+			game.receivePoints(points);
+			game.enableSW();
+			
+			shield = 1;
+			
+>>>>>>> Stashed changes
 		}
 		
 	}

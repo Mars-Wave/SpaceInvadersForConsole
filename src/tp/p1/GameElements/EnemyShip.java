@@ -23,9 +23,12 @@ public abstract class EnemyShip extends Ship{
 		return true;
 	}
 	
+<<<<<<< Updated upstream
 	public boolean receiveShockWaveAttack(int damage) {
 		shield -= damage;
 		return true;
 	}
 	
+=======
+>>>>>>> Stashed changes
 }

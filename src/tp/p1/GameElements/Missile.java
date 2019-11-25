@@ -8,8 +8,13 @@ public class Missile extends Weapon {
  
     private static int count;
 
+<<<<<<< Updated upstream
     public Missile(Game game, int x, int y) {
         super(game, x, y, 1);
+=======
+    public Missile(Game game, int x, int y, int dmg) {
+        super(game, x, y, dmg);
+>>>>>>> Stashed changes
         itExists = true;
         // TODO Auto-generated constructor stub
     }
@@ -40,7 +45,11 @@ public class Missile extends Weapon {
 	public boolean performAttack(GameElement other) {
 		boolean aux = other.getX() == positionX && other.getY() == positionY;
 		if(aux) {
+<<<<<<< Updated upstream
 			if (other.receiveMissileAttack(damage))
+=======
+			if(other.receiveMissileAttack(damage))
+>>>>>>> Stashed changes
 			itExists = false;
 		}
 		return aux;

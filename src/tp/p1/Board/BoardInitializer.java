@@ -1,11 +1,22 @@
 package tp.p1.Board;
 
+<<<<<<< Updated upstream
 //import /* imported classes */
 
 import tp.p1.Model.Game;
 import tp.p1.GameElements.CarrierShip;
 import tp.p1.GameElements.DestroyerShip;
 import tp.p1.GameElements.UFO;
+=======
+import tp.p1.GameElements.AlienShip;
+
+//import /* imported classes */
+
+import tp.p1.GameElements.CarrierShip;
+import tp.p1.GameElements.DestroyerShip;
+import tp.p1.GameElements.UFO;
+import tp.p1.Model.Game;
+>>>>>>> Stashed changes
 import tp.p1.Model.Level;
 
 public class BoardInitializer {
@@ -16,14 +27,26 @@ public class BoardInitializer {
     public Board initialize(Game game, Level level) {
         this.level = level;
         this.game = game;
+<<<<<<< Updated upstream
         board = new Board(game, level.getNumCarrierShips()*2 + 2*level.getNumDestroyers() + 4); // (+ 4 = ufo, playership, missile, shockwave), 2*carriers theoretical temporary space for explosiveships, 2*destroyers because ones are the bombs the other the ships
         initializeCarrierShips();
         initializeDestroyers();
         initializeUFO();
+=======
+        board = new Board(game, level.getNumCarrierShips() + 2*level.getNumDestroyers() + 4 + 4); // (+ 4 = ufo, playership, missile, shockwave) 2*destroyers because ones are the bombs the other the ships
+        initializeCarrierShips();
+        initializeDestroyers();
+        initializeUFO();
+        AlienShip.initializeDir();
+>>>>>>> Stashed changes
         return board;
     }
 
     private void initializeUFO() {
+<<<<<<< Updated upstream
+=======
+    	 
+>>>>>>> Stashed changes
     	UFO u = new UFO(game);
     	board.add(u);
     	u.destroy();

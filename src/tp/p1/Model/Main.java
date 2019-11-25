@@ -1,5 +1,12 @@
 package tp.p1.Model;
 
+<<<<<<< Updated upstream
+=======
+import tp.p1.Model.Controller;
+import tp.p1.Model.Game;
+import tp.p1.Model.Level;
+
+>>>>>>> Stashed changes
 import java.util.Random;
 
 public class Main {

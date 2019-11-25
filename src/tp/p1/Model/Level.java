@@ -59,17 +59,26 @@ public enum Level {
         return getNumDestroyers();
     }
 
+<<<<<<< Updated upstream
     public Double getExplosiveFreq() {
         return turnExplosiveFreq;
     }
 
+=======
+>>>>>>> Stashed changes
     public static Level parse(String inputString) {
         for (Level level : Level.values())
             if (level.name().equalsIgnoreCase(inputString))
                 return level;
         return null;
     }
+<<<<<<< Updated upstream
 /*public Double turnExplosiveFrequency(){	//Implement when we add the new element :=)
 return turnExplosiveFreq;
 }*/
+=======
+public Double turnExplosiveFrequency(){	//Implement when we add the new element :=)
+return turnExplosiveFreq;
+}
+>>>>>>> Stashed changes
 }

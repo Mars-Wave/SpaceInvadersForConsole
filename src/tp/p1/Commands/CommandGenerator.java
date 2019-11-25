@@ -9,7 +9,13 @@ public class CommandGenerator {
 			new NoneCommand(),
 			new ShootCommand(),
 			new MoveCommand(),
+<<<<<<< Updated upstream
 			new ShockwaveCommand()
+=======
+			new ShockwaveCommand(),
+			new BuyCommand(),
+			new ShopCommand()
+>>>>>>> Stashed changes
 			};
 
 	public static Command parse(String[] commandWords) {

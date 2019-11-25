@@ -1,5 +1,6 @@
 package tp.p1.Board;
 
+<<<<<<< Updated upstream
 import tp.p1.GameElements.AlienShip;
 import tp.p1.GameElements.GameElement;
 import tp.p1.Model.Game;
@@ -8,6 +9,14 @@ import tp.p1.Model.Level;
 import java.util.Random;
 
 //import java.awt.datatransfer.FlavorEvent;
+=======
+import tp.p1.GameElements.GameElement;
+import tp.p1.GameElements.AlienShip;
+import tp.p1.Model.Game;
+import tp.p1.Model.Level;
+//import java.awt.datatransfer.FlavorEvent;
+import java.util.Random;
+>>>>>>> Stashed changes
 
 
 public class Board {
@@ -21,7 +30,11 @@ public class Board {
         elements = new GameElement[numelements]; //Conflicted about this shit, the array needs to be initialised so add(GameElement gameElement) can add shit so I give it the amount of total ships the game is gonna have
     }
 
+<<<<<<< Updated upstream
     private int getcurrentElements() {
+=======
+    public int getcurrentElements() {
+>>>>>>> Stashed changes
         return currentElements;
     }
 
@@ -29,6 +42,7 @@ public class Board {
         elements[currentElements] = gameElement;
         currentElements++;
     }
+<<<<<<< Updated upstream
 
     public void update() {
         for (int i = 0; i < currentElements; i++) {
@@ -37,11 +51,26 @@ public class Board {
             checkAttacks(elements[i]);
         }
         AlienShip.changeDir();
+=======
+    
+    public void replace(GameElement oldElement, GameElement newElement) {
+        elements[getIndex(oldElement.getX(), oldElement.getY())] = newElement;
+    }
+
+    public void update() {
+        for (int i = 0; i < currentElements; i++) {
+        	checkAttacks(elements[i]);
+            elements[i].move();   
+            checkAttacks(elements[i]);
+        }
+        AlienShip.changeDir();   
+>>>>>>> Stashed changes
         removeDead();
 // TODO implement
     }
 
     public void checkAttacks(GameElement gameElement) {
+<<<<<<< Updated upstream
         if (gameElement.exists()) {
             for (int j = 0; j < currentElements; j++) {
                 if (gameElement != elements[j]) {
@@ -50,6 +79,16 @@ public class Board {
                 }
             }
         }
+=======
+    	if(gameElement.exists()){
+    		for(int j = 0; j < currentElements; j++) {
+    			if(gameElement != elements[j]) {
+    				gameElement.performAttack(elements[j]);
+    			}
+    		
+    	}
+    	}
+>>>>>>> Stashed changes
 // TODO implement
     }
 
@@ -93,6 +132,7 @@ public class Board {
     }
 
     private void remove(GameElement gameElement, int where) {
+<<<<<<< Updated upstream
         elements[where].onDelete();
         elements[where].destroy();
         GameElement aux;
@@ -103,6 +143,19 @@ public class Board {
                 elements[i] = aux;
             }
             currentElements--;
+=======
+    	elements[where].destroy();
+    	elements[where].onDelete(); 
+    	 GameElement aux;
+        if(!elements[where].exists()) {
+        	 
+	        for (int i = where; i < currentElements - 1; i++) {
+	            aux = elements[i + 1];
+	            elements[i + 1] = elements[i];
+	            elements[i] = aux;
+	        }
+	        currentElements--;
+>>>>>>> Stashed changes
         }
 // TODO implement
     }
@@ -110,8 +163,13 @@ public class Board {
     private void removeDead() {
         int n = currentElements;
         for (int i = n; i > 0; i--) {
+<<<<<<< Updated upstream
             if (!elements[i - 1].isAlive() || elements[i - 1].isOut() || !elements[i - 1].exists()) {
                 remove(elements[i - 1], i - 1);
+=======
+        	if (!elements[i - 1].isAlive() || elements[i-1].isOut()|| !elements[i-1].exists()) {
+                remove(elements[i - 1], i-1);  
+>>>>>>> Stashed changes
             }
         }
 // TODO implement

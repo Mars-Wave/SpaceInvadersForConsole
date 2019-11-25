@@ -27,8 +27,14 @@ public class MoveCommand extends Command {
         Command com = null;
         if (commandWords.length > 2) { //risk management
             if (matchCommandName(commandWords[0])) {
+<<<<<<< Updated upstream
             	numCells = Integer.parseInt(commandWords[2]);
                 if (numCells < 3 && numCells > 0) {
+=======
+                if (numCells < 3 && numCells > 0) {
+            	numCells = Integer.parseInt(commandWords[2]);
+
+>>>>>>> Stashed changes
                     if (commandWords[1].equalsIgnoreCase("L") || commandWords[1].equalsIgnoreCase("Left")) {
                         dir = Direction.LEFT;
                         com = this;

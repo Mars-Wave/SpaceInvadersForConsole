@@ -1,6 +1,12 @@
 package tp.p1.Model;
 
+<<<<<<< Updated upstream
 import tp.p1.Board.*;
+=======
+import tp.p1.Board.Board;
+import tp.p1.Board.BoardInitializer;
+import tp.p1.Board.GamePrinter;
+>>>>>>> Stashed changes
 import tp.p1.GameElements.*;
 import tp.p1.Interfaces.IPlayerController;
 
@@ -13,7 +19,11 @@ public class Game implements IPlayerController {
     private GamePrinter printer;
     private Random rand;
     private Level level;
+<<<<<<< Updated upstream
     Board board;
+=======
+    public  Board board;
+>>>>>>> Stashed changes
     private UCMspaceship player;
     private boolean doExit;
     private BoardInitializer initializer;
@@ -37,6 +47,13 @@ public class Game implements IPlayerController {
         return rand;
     }
 
+<<<<<<< Updated upstream
+=======
+    public void checkAttacks(GameElement element){
+        board.checkAttacks(element);
+    }
+    
+>>>>>>> Stashed changes
     public Level getLevel() {
         return level;
     }
@@ -48,7 +65,18 @@ public class Game implements IPlayerController {
         return level.getNumCyclesToMoveOneCell();
     }
     
+<<<<<<< Updated upstream
 
+=======
+    public int getcurrentElements() {
+        return board.getcurrentElements();
+    }
+    
+    public void explosiveAttack() {
+    	//board.
+    }
+    
+>>>>>>> Stashed changes
     public void reset() {
         initGame();
     }
@@ -57,10 +85,13 @@ public class Game implements IPlayerController {
         board.add(object);
     }
 
+<<<<<<< Updated upstream
     public void checkAttacks(GameElement element){
         board.checkAttacks(element);
     }
 
+=======
+>>>>>>> Stashed changes
     public String positionToString(int x, int y) {//Maybe we are supposed to call this in gamePrinter instead of directly board.tostring?
         return board.toString(x, y);
     }
@@ -122,6 +153,7 @@ public class Game implements IPlayerController {
     //TODO implement the methods of the IPlayerController interface
 
     @Override
+<<<<<<< Updated upstream
     public boolean shootMissile() {
         boolean aux = player.canShoot();
         if(aux) {
@@ -130,13 +162,39 @@ public class Game implements IPlayerController {
             board.add(m);
         }
         return aux;
+=======
+    public boolean shootMissile(int type) {
+    		boolean canBeDone = false;
+        if(player.canShoot()) {
+        	Missile m = null;
+        	if(type == 1) {
+        		  m = new Missile(this, player.getX(), player.getY(), 1);	//Fix the one
+        		 
+        	}
+        	else if(type == 2 && player.smHave()) {
+        		  m = new SuperMissile(this, player.getX(), player.getY());	//Fix the one
+        		  
+        	}
+        	if(m != null) {
+        		player.shoot(m);
+                board.add(m);
+                canBeDone = true;
+        	}
+            
+        }
+        return canBeDone;
+>>>>>>> Stashed changes
     }
 
     public void releaseShockWave() {
     	if(player.swHave()) {
+<<<<<<< Updated upstream
 
     		 player.releaseSW(new ShockWave(this, player.getX(), player.getY()));
 
+=======
+    		 player.releaseSW(new ShockWave(this, player.getX(), player.getY()));
+>>>>>>> Stashed changes
     	}
         
     }
@@ -167,7 +225,36 @@ public class Game implements IPlayerController {
     }
 
 	public void enableSW() {
+<<<<<<< Updated upstream
 		// TODO Auto-generated method stub
 		player.enableSW();
 	}
+=======
+		player.enableSW();
+	}
+
+	public void disableSW() {
+		player.disableSW();
+	}
+
+	public void replace(GameElement oldElement, GameElement newElement) {
+       board.replace(oldElement, newElement);
+    }
+	
+	public boolean canBuy(String gElement) {
+		boolean canBuyIt = false;
+		if(gElement == "SuperMissile") {
+			if(player.getScore() >= SuperMissile.checkPrice()) {
+				player.enableSM();
+				player.recievePoints(-SuperMissile.checkPrice());
+				canBuyIt = true;
+			}
+		}
+		return canBuyIt;
+	}
+
+	public void disableSM() {
+		player.disableSM();
+	}
+>>>>>>> Stashed changes
 }

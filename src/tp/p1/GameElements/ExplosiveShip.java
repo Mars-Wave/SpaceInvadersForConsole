@@ -2,6 +2,7 @@ package tp.p1.GameElements;
 
 import tp.p1.Model.Game;
 
+<<<<<<< Updated upstream
 public class ExplosiveShip extends AlienShip {
     boolean Exploding;
 
@@ -11,6 +12,23 @@ public class ExplosiveShip extends AlienShip {
     }
 
     @Override
+=======
+public class ExplosiveShip extends CarrierShip{
+	private int damage = 1;
+	boolean Exploding;
+	
+	public ExplosiveShip(Game game, int x, int y) {
+		super(game, x, y);
+		Exploding = false;
+		// TODO Auto-generated constructor stub
+	}
+	
+	public String toString() {
+		return "*<" + shield + ">*";
+	}
+
+	@Override
+>>>>>>> Stashed changes
     public void onDelete() {
         // TODO Auto-generated method stub
         if (shield <= 0) {
@@ -36,6 +54,7 @@ public class ExplosiveShip extends AlienShip {
 
         return true;
     }
+<<<<<<< Updated upstream
 
     @Override
     public void computerAction() {
@@ -46,3 +65,12 @@ public class ExplosiveShip extends AlienShip {
         return "*<" + shield + ">*";
     }
 }
+=======
+	
+	@Override
+	public void computerAction() {
+		//Default Empty
+	}
+	
+}
+>>>>>>> Stashed changes

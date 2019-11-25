@@ -23,7 +23,11 @@ class Controller {
 					System.out.println(game.infoToString());
 				}
 				else {
+<<<<<<< Updated upstream
 					System.out.println("It cannot be done.");
+=======
+					//Did u ask him??
+>>>>>>> Stashed changes
 				}
 			}
 			else if (words[0].equals("")) {
@@ -32,7 +36,10 @@ class Controller {
 			}
 			else {
 				System.out.format("Unknown command\r\n");
+<<<<<<< Updated upstream
 				
+=======
+>>>>>>> Stashed changes
 			}
 		}
 			if(game.playerWins()){

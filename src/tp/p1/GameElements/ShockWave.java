@@ -2,8 +2,12 @@ package tp.p1.GameElements;
 
 import tp.p1.Model.Game;
 
+<<<<<<< Updated upstream
 public class ShockWave extends Weapon {
 	
+=======
+public class ShockWave extends Weapon {	
+>>>>>>> Stashed changes
 	
 	public ShockWave(Game game, int x, int y) {
 		super(game, x, y, 1);
@@ -19,7 +23,11 @@ public class ShockWave extends Weapon {
 	@Override
 	public void onDelete() {
 		// TODO Auto-generated method stub
+<<<<<<< Updated upstream
 		
+=======
+		game.disableSW();
+>>>>>>> Stashed changes
 	}
 
 	@Override
@@ -34,8 +42,13 @@ public class ShockWave extends Weapon {
 
 	@Override
 	public boolean performAttack(GameElement other) {
+<<<<<<< Updated upstream
 				other.receiveShockWaveAttack(damage);
 				this.itExists = false;
+=======
+			other.receiveShockWaveAttack(damage);
+			itExists = false;
+>>>>>>> Stashed changes
 		return itExists;
 	}
 

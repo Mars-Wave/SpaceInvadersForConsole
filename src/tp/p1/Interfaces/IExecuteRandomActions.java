@@ -10,7 +10,13 @@ public interface IExecuteRandomActions {
     static boolean canGenerateBomb(Game game) {
         return game.getRandom().nextInt(10) < 10 * game.getLevel().getShootFrequency();
     }
+<<<<<<< Updated upstream
     static boolean evolveExplosive(Game game) {
         return game.getRandom().nextInt(100) < 100 * game.getLevel().getExplosiveFreq();
+=======
+    
+    static boolean canGenerateExplosiveShip(Game game) {
+        return game.getRandom().nextInt(10) < 10 * game.getLevel().turnExplosiveFrequency();
+>>>>>>> Stashed changes
     }
 }
